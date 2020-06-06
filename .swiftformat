@@ -1,0 +1,18 @@
+# swift version
+--swiftversion 5.2
+
+
+# format options
+
+--allman false
+--self remove
+--elseposition same-line
+--importgrouping alphabetized
+--maxwidth 100
+--trimwhitespace always
+
+--header "{file}\nCreated on {created}\nCopyright © {year} www.codewithshabib.com"
+
+# rules
+
+--enable isEmpty

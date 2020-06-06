@@ -1,0 +1,27 @@
+# auto correct rules on git precommit command
+# swift run swiftlint autocorrect --config '.swiftlint.auto.yml' --path Sources/
+# only includes rules that can be automatically corrected 
+  
+opt_in_rules:
+  - closure_end_indentation # Closure end should have the same indentation as the line that started it.
+  - closure_spacing # Closure expressions should have a single space inside each brace.
+  - explicit_init # Explicitly calling .init() should be avoided.
+  - implicit_return # Prefer implicit returns in closures.
+  - joined_default_parameter # Discouraged explicit usage of the default separator.
+  - literal_expression_end_indentation # Array and dictionary literal end should have the same indentation as the line that started it.
+  - modifier_order # Modifier order should be consistent.
+  - number_separator # Underscores should be used as thousand separator in large decimal numbers.
+  - operator_usage_whitespace # Operators should be surrounded by a single whitespace when they are being used.
+  - redundant_nil_coalescing # nil coalescing operator is only evaluated if the lhs is nil, coalescing operator with nil as rhs is redundant
+  - redundant_type_annotation # Variables should not have redundant type annotation
+  - toggle_bool # Prefer `someBool.toggle()` over `someBool = !someBool`.
+  - unneeded_parentheses_in_closure_argument # Parentheses are not needed when declaring closure arguments.
+  - untyped_error_in_catch # Catch statements should not declare error variables without type casting.
+  - unused_import # All imported modules should be required to make the file compile.
+  - vertical_whitespace_between_cases # Include a single empty line between switch cases.
+  - vertical_whitespace_closing_braces # Don't include vertical whitespace (empty line) before closing braces.
+
+included: 
+  - CollectionView/
+
+reporter: "xcode"
