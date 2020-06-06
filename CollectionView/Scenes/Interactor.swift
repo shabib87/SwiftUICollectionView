@@ -21,12 +21,12 @@ final class Interactor: ObservableObject {
 
     func loadMore() {
         currentPage += 1
-        fetchQuests()
+        fetchItems()
     }
 
     @discardableResult func refresh() -> AnyPublisher<Void, Never> {
         currentPage = 1
-        fetchQuests(isRefreshing: true)
+        fetchItems(isRefreshing: true)
         return refreshCompletionSubject.eraseToAnyPublisher()
     }
 
@@ -34,7 +34,7 @@ final class Interactor: ObservableObject {
     private var currentPage = 1
     private let refreshCompletionSubject = PassthroughSubject<Void, Never>()
 
-    private func fetchQuests(isRefreshing: Bool = false) {
+    private func fetchItems(isRefreshing: Bool = false) {
         service.fetchItems(page: currentPage)
             .map { items in
                 items.map { FeedViewModel(model: $0) }

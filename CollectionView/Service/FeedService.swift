@@ -35,8 +35,8 @@ struct FeedService {
                 var items = [Model]()
                 // faking pagination request
                 for i in 1 ... self.rpp {
-                    let quest = Model(name: "Item \((page - 1) * self.rpp + i)")
-                    items.append(quest)
+                    let item = Model(name: "Item \((page - 1) * self.rpp + i)")
+                    items.append(item)
                 }
                 completion(items)
             }
