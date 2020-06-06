@@ -8,7 +8,6 @@ import SwiftUI
 
 struct FeedView: UIViewControllerRepresentable {
     private var items: [FeedViewModel]
-    private let coordinator: Coordinator
 
     private let loadMoreSubject: PassthroughSubject<Void, Never>?
     private let itemSelectionSubject: PassthroughSubject<IndexPath, Never>?
