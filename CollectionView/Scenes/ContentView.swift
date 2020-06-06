@@ -21,7 +21,8 @@ struct ContentView: View {
             FeedView(items: interactor.items,
                      loadMoreSubject: interactor.loadMoreSubject,
                      itemSelectionSubject: interactor.itemSelectionSubject,
-                     pullToRefreshSubject: interactor.pullToRefreshSubject)
+                     pullToRefreshSubject: interactor.pullToRefreshSubject,
+                     prefetchLimit: 20)
                 .onReceive(interactor.loadMoreSubject, perform: {
                     self.interactor.loadMore()
                 })

@@ -13,17 +13,20 @@ struct FeedView: UIViewControllerRepresentable {
     private let loadMoreSubject: PassthroughSubject<Void, Never>?
     private let itemSelectionSubject: PassthroughSubject<IndexPath, Never>?
     private let pullToRefreshSubject: PassthroughSubject<PullToRefreshCompletion, Never>?
+    private let prefetchLimit: Int
 
     // MARK: Init
 
     init(items: [FeedViewModel],
          loadMoreSubject: PassthroughSubject<Void, Never>? = nil,
          itemSelectionSubject: PassthroughSubject<IndexPath, Never>? = nil,
-         pullToRefreshSubject: PassthroughSubject<PullToRefreshCompletion, Never>? = nil) {
+         pullToRefreshSubject: PassthroughSubject<PullToRefreshCompletion, Never>? = nil,
+         prefetchLimit: Int = 10) {
         self.items = items
         self.loadMoreSubject = loadMoreSubject
         self.itemSelectionSubject = itemSelectionSubject
         self.pullToRefreshSubject = pullToRefreshSubject
+        self.prefetchLimit = prefetchLimit
     }
 
     func makeUIViewController(context _: Context)
@@ -31,7 +34,8 @@ struct FeedView: UIViewControllerRepresentable {
         FeedViewController(
             loadMoreSubject: loadMoreSubject,
             itemSelectionSubject: itemSelectionSubject,
-            pullToRefreshSubject: pullToRefreshSubject
+            pullToRefreshSubject: pullToRefreshSubject,
+            prefetchLimit: prefetchLimit
         )
     }
 

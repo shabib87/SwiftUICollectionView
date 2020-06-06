@@ -11,7 +11,9 @@ typealias PullToRefreshCompletion = () -> Void
 final class FeedViewController: UIViewController {
     init(loadMoreSubject: PassthroughSubject<Void, Never>? = nil,
          itemSelectionSubject: PassthroughSubject<IndexPath, Never>? = nil,
-         pullToRefreshSubject: PassthroughSubject<PullToRefreshCompletion, Never>? = nil) {
+         pullToRefreshSubject: PassthroughSubject<PullToRefreshCompletion, Never>? = nil,
+         prefetchLimit: Int) {
+        self.prefetchLimit = prefetchLimit
         self.loadMoreSubject = loadMoreSubject
         self.itemSelectionSubject = itemSelectionSubject
         self.pullToRefreshSubject = pullToRefreshSubject
@@ -49,6 +51,7 @@ final class FeedViewController: UIViewController {
         view.addSubview(collectionView)
     }
 
+    private let prefetchLimit: Int
     private var items = [FeedViewModel]()
     private var isPaginating = false
 
@@ -89,9 +92,9 @@ final class FeedViewController: UIViewController {
             [weak self] visibleItems, _, _ in
             guard let self = self,
                 let row = visibleItems.last?.indexPath.row else { return }
-            // fetching next page 5 index before last item
-            if self.items.count - 5 > 0,
-                row >= self.items.count - 5 {
+            // sending prefetch subscription notice for pagination
+            if self.items.count - self.prefetchLimit > 0,
+                row >= self.items.count - self.prefetchLimit {
                 guard !self.isPaginating else { return }
                 self.isPaginating = true
                 self.loadMoreSubject?.send()
