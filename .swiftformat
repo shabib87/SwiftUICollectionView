@@ -11,7 +11,7 @@
 --maxwidth 100
 --trimwhitespace always
 
---header "{file}\nCreated on {created}\nCopyright © {year} www.codewithshabib.com"
+--header "{file}\nCreated on {created}\nDistributed under MIT License\nCopyright © {year} www.codewithshabib.com"
 
 # rules
 
