@@ -51,7 +51,6 @@ final class FeedCollectionCell: UICollectionViewCell {
 
     override init(frame _: CGRect) {
         super.init(frame: .zero)
-        backgroundColor = .brown
     }
 
     required init?(coder _: NSCoder) {

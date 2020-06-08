@@ -24,7 +24,6 @@ final class FeedCollectionHeaderView: UICollectionReusableView {
     override init(frame _: CGRect) {
         super.init(frame: .zero)
         setupView()
-        backgroundColor = .yellow
     }
 
     required init?(coder _: NSCoder) {

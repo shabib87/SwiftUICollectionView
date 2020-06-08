@@ -24,7 +24,6 @@ final class FeedCollectionFooterView: UICollectionReusableView {
     override init(frame _: CGRect) {
         super.init(frame: .zero)
         setupView()
-        backgroundColor = .red
     }
 
     required init?(coder _: NSCoder) {
